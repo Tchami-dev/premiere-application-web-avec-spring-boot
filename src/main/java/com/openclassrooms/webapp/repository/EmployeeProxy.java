@@ -13,7 +13,7 @@ import com.openclassrooms.webapp.model.Employee;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Component
+@Component 
 public class EmployeeProxy {
 
     @Autowired
