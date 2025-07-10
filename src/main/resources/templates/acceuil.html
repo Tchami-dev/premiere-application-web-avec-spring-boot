@@ -13,6 +13,7 @@
             <tr>
                 <th>Prénom</th>
                 <th>Nom</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,8 @@
             <tr th:each="employee : ${employees}">
                 <td><span th:text="${employee.firstName}">Prénom</span></td>
                 <td><span th:text="${employee.lastName}">Nom</span></td>
+                <td><a th:href="@{/deleteEmployee/{id}(id=${employee.id})}">Supprimer</a></td>
+                <td><a th:href="@{/updateEmployee/{id}(id=${employee.id})}">Modifier</a><td></td>
             </tr>
         </tbody>
     </table>

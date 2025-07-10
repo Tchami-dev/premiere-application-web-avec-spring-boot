@@ -7,11 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.openclassrooms.webapp.model.Employee;
-import com.openclassrooms.webapp.repository.EmployeeProxy;
 import com.openclassrooms.webapp.service.EmployeeService;
 
 @Controller
@@ -46,19 +46,15 @@ public String acceuil(Model model) {                                 // model pe
    return "home";                                             // retourne le nouveau nom au fichier fichier "home" HTML (sans .html)
 }
 
- /*@PostMapping("/saveEmployee")
-  public String saveEmployee(@ModelAttribute Employee employee){
-    EmployeeRepository.save(employee);
-    return "redirect:/home";
-  }*/
-
-
-  /*@PostMapping("/saveEmployee")
-  public String saveEmployee(@ModeAttribute Employee employee){
-    ;
-    return "redirect:/home";
-  }*/
+@GetMapping("/deleteEmployee/{id}")
+public ModelAndView deleteEmployee(@PathVariable("id") final int id) {
+    service.deleteEmployee(id);
+    return new ModelAndView("redirect:/");
+}
   
+
+
+
 
 }
 
