@@ -3,7 +3,6 @@ package com.openclassrooms.webapp.model;
 import lombok.Data;
 
 @Data
-
 public class Employee {
     
     private Integer id;

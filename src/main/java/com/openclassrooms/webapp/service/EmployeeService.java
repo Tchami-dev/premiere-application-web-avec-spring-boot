@@ -6,9 +6,10 @@ import org.springframework.stereotype.Service;
 import com.openclassrooms.webapp.model.Employee;
 import com.openclassrooms.webapp.repository.EmployeeProxy;
 import lombok.Data;
-
+import lombok.extern.slf4j.Slf4j;
 @Data
 @Service
+@Slf4j
 public class EmployeeService {
 
     @Autowired
@@ -31,6 +32,7 @@ public class EmployeeService {
     /* ce code permet de gèrer les enregistrement et mise à jour des employés */
      public Employee saveEmployee(Employee employee) {
         Employee savedEmployee;                            // reçoit un objet employé est le retoune (en mise à jour ou au statut de nouveau), puis le stocke dans la variable
+      log.info("utilisateur first name =  {} last name ={} mail = {} password = {}", employee.getFirstName(), employee.getLastName(), employee.getMail(), employee.getPassword());                                       // enregistrement des donnnées dans la couche service + repository
 
         // Règle de gestion : Le nom de famille doit être mis en majuscule.
         employee.setLastName(employee.getLastName().toUpperCase());

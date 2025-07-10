@@ -46,7 +46,7 @@ public String acceuil(Model model) {                                 // model pe
    return "home";                                             // retourne le nouveau nom au fichier fichier "home" HTML (sans .html)
 }
 
-@GetMapping("/deleteEmployee/{id}")
+@DeleteMapping("/deleteEmployee/{id}")
 public ModelAndView deleteEmployee(@PathVariable("id") final int id) {
     service.deleteEmployee(id);
     return new ModelAndView("redirect:/");
