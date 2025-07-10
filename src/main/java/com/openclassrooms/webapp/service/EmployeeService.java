@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import com.openclassrooms.webapp.model.Employee;
 import com.openclassrooms.webapp.repository.EmployeeProxy;
-import java.util.List;
 import lombok.Data;
 
 @Data

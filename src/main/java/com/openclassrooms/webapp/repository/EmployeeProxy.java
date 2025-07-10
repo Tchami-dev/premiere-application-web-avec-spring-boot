@@ -6,9 +6,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
-import java.util.List;
 import com.openclassrooms.webapp.CustomProperties;
 import com.openclassrooms.webapp.model.Employee;
 
