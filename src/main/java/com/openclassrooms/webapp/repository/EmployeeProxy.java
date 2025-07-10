@@ -19,54 +19,37 @@ import lombok.extern.slf4j.Slf4j;
 public class EmployeeProxy {
 
     @Autowired
-    private CustomProperties props;    
+    private CustomProperties props;       //injection du beans CustomProperties sous le nom de props
 
     /**
     * Get all employees
     * @return An iterable of all employees
     */
 
-    public Iterable<Employee> getEmployees(){
-        String baseApiUrl = props.getApiUrl();
-        String getEmployeesUrl = baseApiUrl + "/employees"; 
+    public Iterable<Employee> getEmployees(){                            //gènere la liste des employées
+        String baseApiUrl = props.getApiUrl();                           //récupère l'URL de la BD de l' API à partie de l' objet props(instance de classe configuré par @Configuration Propertie ) 
+        String getEmployeesUrl = baseApiUrl + "/employees";               //construction complet de l'URL pour récupérer les employés de la BD/h2-console
            
 
-        RestTemplate restTemplate = new RestTemplate();
-        HttpEntity<Employee> request = new HttpEntity<> ();
+        RestTemplate restTemplate = new RestTemplate();                    //création d'une instance de restTemplate permettent de communiquer avec l'API au moyen des requêtes get, post, put, delete 
+        HttpEntity<Employee> request = new HttpEntity<> ();                 //création d'une requête HTTP vide contenant un objet Employee 
 
-         ResponseEntity<Iterable<Employee>> response = restTemplate.exchange(
-                getEmployeesUrl,
-                HttpMethod.GET,
-                Employee.class,
-                null,
-                new ParameterizedTypeReference<Iterable<Employee>>() {}
+
+
+         ResponseEntity<Iterable<Employee>> response = restTemplate.exchange(   //Utilisation de restTemplate pour faire une applel HTTP get à URL pour récupérer la liste des employés. d'ou la déclaration d'une variable de types response
+                getEmployeesUrl,                                                   // cible l'appel get
+                HttpMethod.GET,                                                     // indique que je veux faire une reqête get
+                //* Employee.class*/
+                null,                                                               //ne passe aucune requête
+                new ParameterizedTypeReference<Iterable<Employee>>() {}               //indication du type exacte attendu
                 );
 
-         log.debug("Get Employees call " + response.getStatusCode().toString());
+         log.debug("Get Employees call " + response.getStatusCode().toString());                //vérification de l'appel HTTP vers l'API
         // log.debug(" Create Employees call " + response.getStatusCode().toString());
 
-        return response.getBody();
+        return response.getBody();                                                   //renvoie de la liste à l'appelant
     }
 
-    public Employee getEmploy(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getEmploy'");
-    }
-
-    public void deleteEmployee(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteEmployee'");
-    }
-
-    public Employee updateEmployee(Employee employee) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateEmployee'");
-    }
-
-    public Employee createEmployee(Employee employee) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'createEmployee'");
-    }
 
       /**
      * @param e
