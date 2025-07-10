@@ -1,10 +1,30 @@
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title >template-spring-boot</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>spring</title>
 </head>
 <body>
-    <h1>Hello SpringFramework and SpringBoot</h1>
+  <h2>Formulaire pour enregistrement des Employés </h2>
+  
+  <form method="post" th:action="@{/saveEmployee}" th:object="${employee}">
+    <label>Nom :  </label><br>
+    <input type="text" th:field="*{firstName}"><br>
+
+    <label>Prenom : </label><br>
+    <input type="text" th:field="*{lastName}"><br>
+
+    <label>E-mail : </label><br>
+    <input type="text" th:field="*{mail}"><br>
+
+    <label>Mots de passe : </label><br>
+    <input type="password" th:field="*{password}"><br>
+     <br>
+    <button type="submit">Créer</button>
+</form>
+
 </body>
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Web Application</title>
+</head>
+
+<body>
+    <h2>Liste des employés</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Si la liste est vide -->
+            <tr th:if="${employees.empty}">
+                <td colspan="2">Aucun employé en base de données</td>
+            </tr>
+
+            <!-- Parcours des employés -->
+            <tr th:each="employee : ${employees}">
+                <td><span th:text="${employee.firstName}">Prénom</span></td>
+                <td><span th:text="${employee.lastName}">Nom</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+    <!-- Lien vers le formulaire d’ajout -->
+    <a th:href="@{/home}">Ajouter un employé</a>
+
+</body>
+</html>
