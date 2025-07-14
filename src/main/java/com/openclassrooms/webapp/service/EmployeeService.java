@@ -16,7 +16,7 @@ public class EmployeeService {
     private EmployeeProxy employeeProxy;           //injection du beans EmployeeProxy sous ne nom de employeeProxy
 
     /* ce code permet de recupérer unn employé précis à partie de son id */
-    public Employee getEmployee(final int id) {      
+    public Employee getEmployee(Integer id) {      
         return employeeProxy.getEmployee(id);              //fait appel à une methode qui communique par url avec l' API afin de retourner un employé
     }
 
@@ -24,8 +24,9 @@ public class EmployeeService {
         return employeeProxy.getEmployees();                // appel la méthode getEmployees() définie dans employé.Proxy qui communique avec l'API pour 
     }
 
-    public void deleteEmployee(final int id) {           //supprime un employé spécifié à partie de son id
-        employeeProxy.deleteEmployee(id);               // effectue une suppression d'employé au moyen de la méthode employeeProxy
+    public void deleteEmployee( Integer id) {                    //supprime un employé spécifié à partie de son id
+        employeeProxy.deleteEmployee(id);                        // effectue une suppression d'employé au moyen de la méthode employeeProxy
+        log.info("l'employé avec id={} a été supprimé", id);
     }
 
 

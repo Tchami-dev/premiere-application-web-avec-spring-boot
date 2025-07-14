@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="fr">
 <head>
     <meta charset="UTF-8">
+     <link rel="stylesheet" th:href="@{/css/formulaire.css}"> 
     <title>Employee Web Application</title>
 </head>
 
@@ -26,8 +27,12 @@
             <tr th:each="employee : ${employees}">
                 <td><span th:text="${employee.firstName}">Prénom</span></td>
                 <td><span th:text="${employee.lastName}">Nom</span></td>
-                <td><a th:href="@{/deleteEmployee/{id}(id=${employee.id})}">Supprimer</a></td>
-                <td><a th:href="@{/updateEmployee/{id}(id=${employee.id})}">Modifier</a><td></td>
+                <td>
+                    <form th:action="@{'/deleteEmployee/' + ${employee.id}}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet employé ?');">
+                      <button type="submit">Supprimer</button>
+                    </form>
+                </td>
+                <td><button th:href="@{/updateEmployee/{id}(id=${employee.id})}">Modifier</button><td></td>
             </tr>
         </tbody>
     </table>
@@ -35,7 +40,7 @@
     <br>
 
     <!-- Lien vers le formulaire d’ajout -->
-    <a th:href="@{/home}">Ajouter un employé</a>
+    <button><a th:href="@{/home}">Ajouter un employé</a></button>
 
 </body>
 </html>

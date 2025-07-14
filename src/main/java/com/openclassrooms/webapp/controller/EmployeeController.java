@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,10 +47,10 @@ public String acceuil(Model model) {                                 // model pe
    return "home";                                             // retourne le nouveau nom au fichier fichier "home" HTML (sans .html)
 }
 
-@DeleteMapping("/deleteEmployee/{id}")
-public ModelAndView deleteEmployee(@PathVariable("id") final int id) {
+@PostMapping("/deleteEmployee/{id}")
+public String deleteEmployee(@PathVariable("id") Integer id) {
     service.deleteEmployee(id);
-    return new ModelAndView("redirect:/");
+    return "redirect:/";
 }
   
 

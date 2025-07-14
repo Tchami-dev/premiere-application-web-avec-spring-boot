@@ -1,0 +1,44 @@
+*{
+    margin: 5%;
+    padding: auto;
+    color: #000;
+    font-weight: 400;
+}
+
+.h2{
+    display: inline;
+}
+
+.div-formulaire{
+    width: 300px;
+    height: auto;
+    border: solid 2px #20de20;
+    background-color: #ececec;
+    justify-content: center;
+    align-self: center;
+    border-radius: 20px;
+    padding: 3%;
+}
+
+.indication{
+    font-size: 1em;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+
+.solution{
+    border: solid 2px #2e2bd9;
+    background-color: #fff;
+    border-radius: 20px;
+    height: 20px;
+    width: 200px;
+}
+
+.creation{
+    width: auto;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #56f256;
+
+}
+

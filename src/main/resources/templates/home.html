@@ -5,26 +5,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" th:href="@{/css/formulaire.css}"> 
   <title>spring</title>
 </head>
-<body>
-  <h2>Formulaire pour enregistrement des Employés </h2>
+
   
+  <div class="div-formulaire">
+
+  <h2>Formulaire d'enregistrement d'un Employé </h2>
+
   <form method="post" th:action="@{/saveEmployee}" th:object="${employee}">
-    <label>Nom :  </label><br>
-    <input type="text" th:field="*{firstName}"><br>
+    <label class="indication">Nom :  </label><br>
+    <input type="text" th:field="*{firstName}" class="solution"><br>
 
-    <label>Prenom : </label><br>
-    <input type="text" th:field="*{lastName}"><br>
+    <label class="indication">Prenom : </label><br>
+    <input type="text" th:field="*{lastName}" class="solution"><br>
 
-    <label>E-mail : </label><br>
-    <input type="text" th:field="*{mail}"><br>
+    <label class="indication">E-mail : </label><br>
+    <input type="text" th:field="*{mail}" class="solution"><br>
 
-    <label>Mots de passe : </label><br>
-    <input type="password" th:field="*{password}"><br>
+    <label class="indication">Mots de passe : </label><br>
+    <input type="password" th:field="*{password}" class="solution" ><br>
      <br>
-    <button type="submit">Créer</button>
+    <button type="submit" class="creation">Créer</button>
 </form>
+
+</div>
 
 </body>
 </html>

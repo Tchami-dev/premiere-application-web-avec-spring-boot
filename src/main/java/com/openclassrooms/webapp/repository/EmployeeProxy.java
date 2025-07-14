@@ -26,12 +26,12 @@ public class EmployeeProxy {
 
     public Iterable<Employee> getEmployees() {
         String baseApiUrl = props.getApiUrl();
-        String getEmployeesUrl = baseApiUrl + "/employee";
+        String getEmployeesUrl = baseApiUrl + "/employee"; /*deleteEmployee/+id */
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Iterable<Employee>> response = restTemplate.exchange(
                 getEmployeesUrl,
-                HttpMethod.GET,
+                HttpMethod.GET,  
                 null,
                 new ParameterizedTypeReference<Iterable<Employee>>() {}
                 );
@@ -59,10 +59,14 @@ public class EmployeeProxy {
        return null;
     }
 
-    public void deleteEmployee(int id) {
-        
-        // TODO Auto-generated method stub    
+    public void deleteEmployee(Integer id){
+         String baseApiUrl = props.getApiUrl();
+        String deleteEmployeeUrl = baseApiUrl + "/deleteEmployee/" + id;
+         RestTemplate restTemplate = new RestTemplate();
+                restTemplate.delete(deleteEmployeeUrl);
+                System.out.println("Employé supprimé avec succès");       
 }
+
     public Employee getEmployee(int id) {
         // TODO Auto-generated method stub
        return null;
@@ -79,10 +83,8 @@ public class EmployeeProxy {
         HttpMethod.POST,
         request,
         Employee.class);
-
     log.debug("Create Employee call " + response.getStatusCode().toString());
-
-    return response.getBody();
-       
+    return response.getBody();     
 }
+
 }
