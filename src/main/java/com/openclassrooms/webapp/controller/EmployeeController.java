@@ -59,6 +59,9 @@ public String deleteEmployee(@PathVariable("id") Integer id) {
 @GetMapping("/editEmployee/{id}")
 public String showEditEmployeeForm(@PathVariable ("id") Integer id , Model model) {
     Employee employee = service.getEmployeeById(id);
+    if (employee == null){
+      return "redirect:/acceuil";
+    }
     model.addAttribute("employee", employee);
     return "home"; 
 }
@@ -66,7 +69,7 @@ public String showEditEmployeeForm(@PathVariable ("id") Integer id , Model model
 @PostMapping("/updateEmployee")
 public String updateEmployee(@ModelAttribute Employee employee){
     service.updateEmployee(employee.getId(), employee);
-    return "redirect:/home"; 
+    return "acceuil"; 
 
 }
   

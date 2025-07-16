@@ -44,19 +44,21 @@ public class EmployeeService {
         employee.setLastName(employee.getLastName().toUpperCase());
 
         /* ce code vérifier id de l'employé pour pouvoir excécuter la bonne condition */
-        if(employee.getId() == null) {
+       
             // Si l'id est nul, alors c'est un nouvel employé.
             savedEmployee = employeeProxy.createEmployee(employee);
-        } else {
-            savedEmployee = employeeProxy.updateEmployee(null, employee);
-        }
-    
         return savedEmployee;
-    }
+         }
+    
+        
+    
 
-     public static void updateEmployee(Integer id, Employee employee) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateEmployee'");
+     public void updateEmployee(Integer id, Employee employee) {
+        log.info("mise à jour effectuée");
+             employeeProxy.updateEmployee(id, employee);
+            
      }
+     
+     
 
 }

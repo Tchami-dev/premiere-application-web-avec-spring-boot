@@ -10,7 +10,7 @@
 
 <div class="div-formulaire">
 
-  <h2 th:text="${employee != null and employee.id != null} ? 'Modifier un Employé' : 'Créer un Employé'"></h2>
+  <h2 th:text="${employee != null and employee.id != null} ? 'Modifier un Employé' : ' Enregistrer un nouveau Employé'"></h2>
 
   <form method="post" 
         th:action="${employee != null and employee.id != null} ? @{/updateEmployee} : @{/saveEmployee}" 

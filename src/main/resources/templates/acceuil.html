@@ -32,7 +32,12 @@
                       <button type="submit">Supprimer</button>
                     </form>
                 </td></per>
-                <td><button> <a th:href="@{'/editEmployee/' + ${employee.id}}">Modifier</a></button></td>
+                <td>
+                  <form th:action="@{'/editEmployee/' + ${employee.id}}" method="get">
+                          <button type="submit">Modifier</button>
+                  </form>
+                </td>
+
             </tr>
 
         </tbody>
