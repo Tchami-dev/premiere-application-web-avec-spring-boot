@@ -69,7 +69,7 @@ public String showEditEmployeeForm(@PathVariable ("id") Integer id , Model model
 @PostMapping("/updateEmployee")
 public String updateEmployee(@ModelAttribute Employee employee){
     service.updateEmployee(employee.getId(), employee);
-    return "acceuil"; 
+    return "redirect:/"; 
 
 }
   
