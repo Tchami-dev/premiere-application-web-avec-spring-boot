@@ -64,9 +64,13 @@ public class EmployeeProxy {
                 restTemplate.delete(deleteEmployeeUrl);       
 }
 
-    public Employee getEmployee(int id) {
-        // TODO Auto-generated method stub
-       return null;
+    public Employee getEmployee(Integer id) {
+        String baseApiUrl = props.getApiUrl();
+        String getEmployeeUrl = baseApiUrl + "/employee/" + id;
+        RestTemplate restTemplate = new RestTemplate();
+
+        Employee employee = restTemplate.getForObject(getEmployeeUrl, Employee.class);
+        return employee;
     }
 
     public Employee createEmployee(Employee employee) {

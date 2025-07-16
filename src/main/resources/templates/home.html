@@ -28,8 +28,7 @@
     <input type="email" th:field="*{mail}" class="solution" required><br>
 
     <label class="indication">Mot de passe :</label><br>
-    <input type="password" th:field="*{password}" class="solution" 
-           th:placeholder="${employee != null and employee.id != null} ? 'Laisser vide pour conserver le mot de passe actuel' : ''}"><br><br>
+    <input type="password" th:field="*{password}" class="solution"><br>
 
     <button type="submit" 
             th:text="${employee != null and employee.id != null} ? 'Mettre à jour' : 'Créer'" 

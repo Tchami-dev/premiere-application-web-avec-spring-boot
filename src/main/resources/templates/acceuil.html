@@ -31,7 +31,7 @@
                     <form th:action="@{'/deleteEmployee/' + ${employee.id}}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet employé ?');">
                       <button type="submit">Supprimer</button>
                     </form>
-                </td>
+                </td></per>
                 <td><button> <a th:href="@{'/editEmployee/' + ${employee.id}}">Modifier</a></button></td>
             </tr>
 

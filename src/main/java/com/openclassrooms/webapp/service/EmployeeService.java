@@ -21,7 +21,8 @@ public class EmployeeService {
     }
 
     public Employee getEmployeeById(Integer id){
-        return null;
+       return getEmployee(id);
+         
     }
 
     public Iterable<Employee> getEmployees() {             //retourne une liste d'employés
