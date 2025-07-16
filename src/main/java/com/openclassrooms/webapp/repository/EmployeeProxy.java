@@ -1,5 +1,7 @@
 package com.openclassrooms.webapp.repository;
 
+import java.net.URI;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -41,30 +43,25 @@ public class EmployeeProxy {
         return response.getBody();
 }
 
-    public Employee updateEmployee(Employee employee) {
-        /*String baseApiUrl = props.getApiUrl();
+    public Employee updateEmployee(Integer id, Employee employee) {
+        String baseApiUrl = props.getApiUrl();
+        String updateUrl = baseApiUrl + "/updateEmployee/" + id;
     RestTemplate restTemplate = new RestTemplate();
-    HttpEntity<Employee> request = new HttpEntity<Employee>();
+    HttpEntity<Employee> request = new HttpEntity<>(employee);
     ResponseEntity<Employee> response = restTemplate.exchange(
-        getEmployeeUrl,
-        HttpMethod.POST,
+        updateUrl,
+        HttpMethod.PUT,
         request,
         Employee.class);
-
     log.debug("Update Employee call " + response.getStatusCode().toString());
-
-    return response.getBody();*/
-
-        // TODO Auto-generated method stub
-       return null;
+    return response.getBody();
     }
 
     public void deleteEmployee(Integer id){
          String baseApiUrl = props.getApiUrl();
         String deleteEmployeeUrl = baseApiUrl + "/deleteEmployee/" + id;
          RestTemplate restTemplate = new RestTemplate();
-                restTemplate.delete(deleteEmployeeUrl);
-                System.out.println("Employé supprimé avec succès");       
+                restTemplate.delete(deleteEmployeeUrl);       
 }
 
     public Employee getEmployee(int id) {
@@ -86,5 +83,7 @@ public class EmployeeProxy {
     log.debug("Create Employee call " + response.getStatusCode().toString());
     return response.getBody();     
 }
+
+
 
 }

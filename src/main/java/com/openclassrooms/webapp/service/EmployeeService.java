@@ -20,6 +20,10 @@ public class EmployeeService {
         return employeeProxy.getEmployee(id);              //fait appel à une methode qui communique par url avec l' API afin de retourner un employé
     }
 
+    public Employee getEmployeeById(Integer id){
+        return null;
+    }
+
     public Iterable<Employee> getEmployees() {             //retourne une liste d'employés
         return employeeProxy.getEmployees();                // appel la méthode getEmployees() définie dans employé.Proxy qui communique avec l'API pour 
     }
@@ -43,10 +47,15 @@ public class EmployeeService {
             // Si l'id est nul, alors c'est un nouvel employé.
             savedEmployee = employeeProxy.createEmployee(employee);
         } else {
-            savedEmployee = employeeProxy.updateEmployee(employee);
+            savedEmployee = employeeProxy.updateEmployee(null, employee);
         }
     
         return savedEmployee;
     }
+
+     public static void updateEmployee(Integer id, Employee employee) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateEmployee'");
+     }
 
 }

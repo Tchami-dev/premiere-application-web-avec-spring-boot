@@ -1,34 +1,41 @@
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" th:href="@{/css/formulaire.css}"> 
-  <title>spring</title>
+  <title>Formulaire Employé</title>
 </head>
+<body>
 
-  
-  <div class="div-formulaire">
+<div class="div-formulaire">
 
-  <h2>Formulaire d'enregistrement d'un Employé </h2>
+  <h2 th:text="${employee != null and employee.id != null} ? 'Modifier un Employé' : 'Créer un Employé'"></h2>
 
-  <form method="post" th:action="@{/saveEmployee}" th:object="${employee}">
-    <label class="indication">Nom :  </label><br>
-    <input type="text" th:field="*{firstName}" class="solution"><br>
+  <form method="post" 
+        th:action="${employee != null and employee.id != null} ? @{/updateEmployee} : @{/saveEmployee}" 
+        th:object="${employee}">
 
-    <label class="indication">Prenom : </label><br>
-    <input type="text" th:field="*{lastName}" class="solution"><br>
+    <input type="hidden" th:field="*{id}"/>
 
-    <label class="indication">E-mail : </label><br>
-    <input type="text" th:field="*{mail}" class="solution"><br>
+    <label class="indication">Nom :</label><br>
+    <input type="text" th:field="*{firstName}" class="solution" required><br>
 
-    <label class="indication">Mots de passe : </label><br>
-    <input type="password" th:field="*{password}" class="solution" ><br>
-     <br>
-    <button type="submit" class="creation">Créer</button>
-</form>
+    <label class="indication">Prénom :</label><br>
+    <input type="text" th:field="*{lastName}" class="solution" required><br>
+
+    <label class="indication">E-mail :</label><br>
+    <input type="email" th:field="*{mail}" class="solution" required><br>
+
+    <label class="indication">Mot de passe :</label><br>
+    <input type="password" th:field="*{password}" class="solution" 
+           th:placeholder="${employee != null and employee.id != null} ? 'Laisser vide pour conserver le mot de passe actuel' : ''}"><br><br>
+
+    <button type="submit" 
+            th:text="${employee != null and employee.id != null} ? 'Mettre à jour' : 'Créer'" 
+            class="creation">Soumettre</button>
+
+  </form>
 
 </div>
 

@@ -42,8 +42,11 @@ public String acceuil(Model model) {                                 // model pe
 
 /* ce code affiche un formulaire de création d'un nouveau employé */
  @GetMapping("/home")                                          // gère les requêtes HTTP GET envoyer par l' URL de "home"
-  public String showForm(Model model) {                        // méthode permattant de renvoyer le nouveau nom à la vue HTML 
-   model.addAttribute("employee", new Employee());             // céer un objet et l'ajoute dans le modèle sous le nom de employé 
+  public String showForm(Model model) { 
+  
+  // méthode permattant de renvoyer le nouveau nom à la vue HTML 
+   model.addAttribute("employee", new Employee()); 
+                      // céer un objet et l'ajoute dans le modèle sous le nom de employé 
    return "home";                                             // retourne le nouveau nom au fichier fichier "home" HTML (sans .html)
 }
 
@@ -51,6 +54,20 @@ public String acceuil(Model model) {                                 // model pe
 public String deleteEmployee(@PathVariable("id") Integer id) {
     service.deleteEmployee(id);
     return "redirect:/";
+}
+
+@GetMapping("/editEmployee/{id}")
+public String showEditEmployeeForm(@PathVariable ("id") Integer id , Model model) {
+    Employee employee = service.getEmployeeById(id);
+    model.addAttribute("employee", employee);
+    return "home"; 
+}
+
+@PostMapping("/updateEmployee")
+public String updateEmployee(@ModelAttribute Employee employee){
+    service.updateEmployee(employee.getId(), employee);
+    return "redirect:/home"; 
+
 }
   
 

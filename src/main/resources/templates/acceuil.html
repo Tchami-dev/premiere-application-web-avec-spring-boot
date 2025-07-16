@@ -24,7 +24,7 @@
             </tr>
 
             <!-- Parcours des employés -->
-            <tr th:each="employee : ${employees}">
+            <t th:each="employee : ${employees}">
                 <td><span th:text="${employee.firstName}">Prénom</span></td>
                 <td><span th:text="${employee.lastName}">Nom</span></td>
                 <td>
@@ -32,8 +32,9 @@
                       <button type="submit">Supprimer</button>
                     </form>
                 </td>
-                <td><button th:href="@{/updateEmployee/{id}(id=${employee.id})}">Modifier</button><td></td>
+                <td><button> <a th:href="@{'/editEmployee/' + ${employee.id}}">Modifier</a></button></td>
             </tr>
+
         </tbody>
     </table>
 
