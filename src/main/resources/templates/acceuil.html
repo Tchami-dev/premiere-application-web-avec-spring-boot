@@ -2,51 +2,48 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="fr">
 <head>
     <meta charset="UTF-8">
-     <link rel="stylesheet" th:href="@{/css/formulaire.css}"> 
     <title>Employee Web Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <h2>Liste des employés</h2>
+<body class="container my-5">
 
-    <table>
-        <thead>
-            <tr>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Si la liste est vide -->
-            <tr th:if="${employees.empty}">
-                <td colspan="2">Aucun employé en base de données</td>
-            </tr>
+<h2 class="mb-4">Liste des employés</h2>
 
-            <!-- Parcours des employés -->
-            <t th:each="employee : ${employees}">
-                <td><span th:text="${employee.firstName}">Prénom</span></td>
-                <td><span th:text="${employee.lastName}">Nom</span></td>
-                <td>
-                    <form th:action="@{'/deleteEmployee/' + ${employee.id}}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet employé ?');">
-                      <button type="submit">Supprimer</button>
-                    </form>
-                </td></per>
-                <td>
-                  <form th:action="@{'/editEmployee/' + ${employee.id}}" method="get">
-                          <button type="submit">Modifier</button>
-                  </form>
-                </td>
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+    <tr>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Si la liste est vide -->
+    <tr th:if="${employees.empty}">
+        <td colspan="3" class="text-center">Aucun employé en base de données</td>
+    </tr>
 
-            </tr>
+    <!-- Parcours des employés -->
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.firstName}">Prénom</td>
+        <td th:text="${employee.lastName}">Nom</td>
+        <td>
+            <form th:action="@{'/deleteEmployee/' + ${employee.id}}" method="post" class="d-inline"
+                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet employé ?');">
+                <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+            </form>
 
-        </tbody>
-    </table>
+            <form th:action="@{'/editEmployee/' + ${employee.id}}" method="get" class="d-inline">
+                <button type="submit" class="btn btn-primary btn-sm">Modifier</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
-    <br>
-
-    <!-- Lien vers le formulaire d’ajout -->
-    <button><a th:href="@{/home}">Ajouter un employé</a></button>
+<!-- Lien vers le formulaire d’ajout -->
+<a th:href="@{/home}" class="btn btn-success mt-3">Ajouter un employé</a>
 
 </body>
 </html>
